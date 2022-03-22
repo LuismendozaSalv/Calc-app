@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import Reac, {useState} from 'react';
+import Button from './components/Button';
+import Functions from './components/Functions';
+import MathOperations from './components/MathOperations';
+import Numbers from './components/Numbers';
+import Result from './components/Result';
 import './App.css';
-
-function App() {
+const App = () => {
+  const arrayTextoFuncionModificaTexto = useState("")
+  const clickHandlerFunction = text => {
+    console.log("Button.clickHandler", text)
+  }
+  console.log("renderizando de App")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="react-calculator">
+      <Result />
+      <Numbers onClickNumber={number =>
+        console.log('Click en number', number) 
+      }/>
+      <Functions 
+        onContentClear={() => 
+          console.log('Content clear')
+        }
+        onDelete = {() =>
+          console.log('Delete')
+        }
+        />
+      <MathOperations 
+        onClickOperation={operation => 
+          console.log("Operation:", operation)
+        }
+        onClickEqual={equal =>
+          console.log("Operation:", equal)
+        }/>
+    </main>
   );
 }
 
